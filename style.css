@@ -605,3 +605,43 @@ body {
     box-shadow: none;
   }
 }
+
+
+/* HISTORY TIMELINE */
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 125px minmax(0, 1fr);
+  gap: 24px;
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+}
+
+.timeline-year {
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding-top: 5px;
+}
+
+.timeline-entry h4 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: normal;
+  color: var(--text);
+}
+
+.timeline-entry p {
+  margin: 0;
+  color: #b8b0bf;
+  font-size: 13px;
+  line-height: 2;
+}
+
+@media (max-width: 650px) {
+  .timeline-entry {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 22px 0;
+  }
+}
