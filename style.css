@@ -712,3 +712,99 @@ a:focus-visible {
     bottom: 0;
   }
 }
+
+
+/* HERO ENTRANCE ANIMATION */
+
+@keyframes sethFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sethGlow {
+  0%, 100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* タイトル領域の背景に淡い発光 */
+header {
+  isolation: isolate;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 420px;
+  height: 420px;
+  top: -170px;
+  left: 42%;
+  border-radius: 50%;
+  background: rgba(255, 54, 184, 0.09);
+  filter: blur(90px);
+  pointer-events: none;
+  animation: sethGlow 7s ease-in-out infinite;
+}
+
+/* タイトルと説明文の登場 */
+header .eyebrow {
+  animation: sethFadeUp 0.8s ease both;
+}
+
+header h1 {
+  animation: sethFadeUp 1s ease 0.12s both;
+}
+
+header .intro {
+  animation: sethFadeUp 1s ease 0.28s both;
+}
+
+header .enter-link {
+  animation: sethFadeUp 1s ease 0.42s both;
+}
+
+header .hero-index {
+  animation: sethFadeUp 1s ease 0.56s both;
+}
+
+/* アーカイブへ進むボタン */
+header .enter-link a {
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+header .enter-link a:hover {
+  color: #fff;
+  background: rgba(255, 54, 184, 0.12);
+  border-color: #ff36b8;
+  box-shadow: 0 0 26px rgba(255, 54, 184, 0.2);
+}
+
+/* 動きを減らす設定の端末ではアニメーションを抑制 */
+@media (prefers-reduced-motion: reduce) {
+  header::before,
+  header .eyebrow,
+  header h1,
+  header .intro,
+  header .enter-link,
+  header .hero-index {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
