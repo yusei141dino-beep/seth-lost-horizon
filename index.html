@@ -22,7 +22,7 @@
   >
 </a>
     <div class="nav-links">
-      <a href="#top">HOME</a>
+      <a href="#home" class="active">HOME</a>
       <a href="#archive">ARCHIVE</a>
       <a href="#history">HISTORY</a>
       <a href="#technology">TECHNOLOGY</a>
@@ -30,7 +30,7 @@
     </div>
   </nav>
 
-  <header>
+  <header id="home">
     <p class="eyebrow">INDEPENDENT WORLD DATABASE</p>
     <h1>SETH:<br>LOST HORIZON</h1>
     <p class="intro">閉ざされた地平の、その先へ。</p>
@@ -77,6 +77,41 @@
     <span>ARCHIVE STATUS: OPERATIONAL</span>
     <span>© SETH: LOST HORIZON</span>
   </footer>
+
+
+<script>
+  const homeSection = document.getElementById("home");
+  const archiveSection = document.getElementById("archive");
+
+  const homeLink = document.querySelector(
+    '.nav-links a[href="#home"]'
+  );
+  const archiveLink = document.querySelector(
+    '.nav-links a[href="#archive"]'
+  );
+
+  function updateActiveMenu() {
+    if (!homeSection || !archiveSection) return;
+
+    const marker = window.scrollY + 130;
+    const archiveStart =
+      archiveSection.getBoundingClientRect().top +
+      window.scrollY;
+
+    const inArchive = marker >= archiveStart;
+
+    homeLink?.classList.toggle("active", !inArchive);
+    archiveLink?.classList.toggle("active", inArchive);
+  }
+
+  window.addEventListener("scroll", updateActiveMenu, {
+    passive: true
+  });
+
+  window.addEventListener("resize", updateActiveMenu);
+
+  updateActiveMenu();
+</script>
 
 </body>
 </html>
