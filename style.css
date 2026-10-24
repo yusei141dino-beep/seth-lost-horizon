@@ -645,3 +645,70 @@ body {
     padding: 22px 0;
   }
 }
+
+
+/* SHARED ARCHIVE REFINEMENT */
+
+/* アーカイブ資料の見出しを統一 */
+.document-heading {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.document-heading .eyebrow {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* 資料ページの本文を読みやすく */
+.tech-content,
+.return-panel {
+  overflow-wrap: anywhere;
+}
+
+.tech-content > p:not(.eyebrow),
+.timeline-entry p {
+  text-wrap: pretty;
+}
+
+/* リンクのキーボード操作時にも視認性を確保 */
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+/* スマートフォンで横幅が窮屈にならないようにする */
+@media (max-width: 650px) {
+  .document-heading {
+    padding-bottom: 16px;
+  }
+
+  .tech-content h2 {
+    overflow-wrap: anywhere;
+  }
+}
+
+
+/* ACTIVE NAVIGATION */
+
+.site-nav .nav-links a.active {
+  color: var(--accent);
+  position: relative;
+}
+
+.site-nav .nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(255, 54, 184, 0.45);
+}
+
+@media (max-width: 650px) {
+  .site-nav .nav-links a.active::after {
+    bottom: 0;
+  }
+}
